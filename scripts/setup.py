@@ -12,7 +12,7 @@ import dataloader as dl
 
 def main():
     # directory to raw images split into training and validation sets. approximately 20% of the original train data was used to make validation set
-    data_dir= 'content/space-images/data/raw/images' 
+    data_dir= '../data/raw/images' 
 
     #create dataloader using Dataloader class, takes in data directory and batch size
     batch_size = 10

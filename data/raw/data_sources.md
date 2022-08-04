@@ -1,4 +1,6 @@
-# Instructions for downloading training datasets
-1. Reference the steps from the "API Credentials" section in https://github.com/Kaggle/kaggle-api to retrieve and store credentials for using the Kaggle API.
-2. Run the following commands to download the datasets:
+# Instructions for downloading training dataset
+The training dataset was too large to be uploaded to github, so it is hosted on google drive here: 
+https://drive.google.com/file/d/1WLaNiocbUqQYWtMJD0m3uxTaUUeXxHlu/view?usp=sharing
+
+
 
