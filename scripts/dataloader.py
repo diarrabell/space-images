@@ -17,8 +17,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 
-import data as data
-
 class Dataloader:
     def __init__(self, dir, batch_size) -> None:
         self.dir = dir
