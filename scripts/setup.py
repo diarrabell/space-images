@@ -2,20 +2,15 @@
 Main script for setting up project and training model, returns a trained resnet 50 model
 """
 import os
+import urllib.request
 import zipfile
 import numpy as np
 import pandas as pd
 import model as md
 import dataloader as dl
 
-def main():
-    # download the training data
-    # if not os.path.exists('./data'):
-    #     os.mkdir('./data')
-    # if not os.path.exists('data/raw/images'):
-    #     pass
 
-    
+def main():
     # directory to raw images split into training and validation sets. approximately 20% of the original train data was used to make validation set
     data_dir= 'data/raw/images' 
 

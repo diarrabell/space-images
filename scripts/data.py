@@ -1,22 +1,18 @@
 """
-This script cleans the data and prepares it for modeling
+This script downloads the training data. You will need to have google client library installed
+
+code adapted from: https://developers.google.com/drive/api/guides/manage-downloads
 """
 
 import os
-import pandas as pd
-import numpy as np
-from sklearn.utils import shuffle
+import google.auth
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from googleapiclient.http import MediaIoBaseDownload
 
-class ExtractData:
-    def __init__(self) -> None:
-        pass
+def download_file():
+    pass
 
-class Dataframe:
-    def __init__(self, zipfile_name) -> None:
-        self.zipfile_name = zipfile_name
-
-    def extract_data(self):
-        print ("extracting")
 
 
 
