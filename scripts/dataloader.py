@@ -19,6 +19,7 @@ import matplotlib.pyplot as plt
 
 class Dataloader:
     def __init__(self, dir, batch_size) -> None:
+        os.listdir()
         self.dir = dir
         self.batch_size = batch_size
         self.data_transforms = {
