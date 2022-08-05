@@ -16,7 +16,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import PIL.Image
-
 PIL.Image.MAX_IMAGE_PIXELS = 423414686
 
 class Dataloader:

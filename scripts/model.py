@@ -3,7 +3,6 @@ This script trains the model and makes predictions
 """
 
 import os
-import dataloader as DL
 import torch
 import torchvision
 import torch.nn as nn

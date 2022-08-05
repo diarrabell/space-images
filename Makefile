@@ -10,3 +10,4 @@ run-container:
 gcloud-deploy:
 	@gcloud config set project second-zephyr-358401
 	@gcloud app deploy app.yaml --stop-previous-version
+ 
