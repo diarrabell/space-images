@@ -74,6 +74,7 @@ class Dataloader:
             image = np.clip(image, 0, 1)
             ax.imshow(image)
             ax.set_title("{}".format(self.class_names[labels[idx]]))
+        plt.show()
         # display a summary of the layers of the model and output shape after each layer
         # summary(self.model, (images.shape[1:]), batch_size=self.batch_size, device="cpu")
 

@@ -89,7 +89,7 @@ class ResNet:
 
                 # step along learning rate scheduler when in train
                 if phase == 'train':
-                    self.scheduler.step()
+                    self.lr_scheduler.step()
                 
                 # calculate and display average loss and accuracy for the epoch
                 epoch_loss = running_loss / self.dataset_sizes[phase]
