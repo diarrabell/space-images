@@ -20,6 +20,7 @@ def load_model():
     return model
 
 def make_prediction(image):
+    #create dataloader
     pass
 
 def load_image(image):

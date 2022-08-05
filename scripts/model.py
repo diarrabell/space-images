@@ -25,7 +25,7 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed(0)
 
 class ResNet:
-    def __init__(self, batch_size, dataset_sizes) -> None: #initialize resnet50 model
+    def __init__(self, batch_size, dataset_sizes) -> None: #initialize resnet18 model
         self.dataset_sizes = dataset_sizes
         self.batch_size = batch_size
         # instantiate pre-trained resnet

@@ -1,5 +1,5 @@
 """
-Main script for setting up project and training model, returns a trained resnet 50 model
+Main script for setting up project and training model, returns a trained resnet 18 model
 """
 import os
 import urllib.request
@@ -15,7 +15,7 @@ def main():
     data_dir= 'space-images/data/raw/images' 
 
     #create dataloader using Dataloader class, takes in data directory and batch size
-    batch_size = 8
+    batch_size = 4
     print("------------------------")
     print("Creating Dataloaders...")
     d = dl.Dataloader(data_dir, batch_size)
