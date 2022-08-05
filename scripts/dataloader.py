@@ -16,6 +16,9 @@ from torchsummary import summary
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+import PIL.Image
+
+PIL.Image.MAX_IMAGE_PIXELS = 423414686
 
 class Dataloader:
     def __init__(self, dir, batch_size) -> None:
@@ -61,6 +64,7 @@ class Dataloader:
         images = images.numpy()
         fig = plt.figure(figsize=(10, 6))
         for idx in np.arange(self.batch_size):
+            print(idx)
             ax = fig.add_subplot(2, self.batch_size//2, idx+1, xticks=[], yticks=[])
             image = images[idx]
             image = image.transpose((1, 2, 0))
