@@ -45,8 +45,8 @@ class Dataloader:
         self.val_dataset = datasets.ImageFolder(os.path.join(self.dir, 'val'), self.data_transforms['val'])
 
         # Create dataloaders for training and validation sets
-        self.train_loader = torch.utils.data.DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=0)
-        self.val_loader = torch.utils.data.DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=True, num_workers=0)
+        self.train_loader = torch.utils.data.DataLoader(self.train_dataset, batch_size=self.batch_size, shuffle=True, num_workers=2)
+        self.val_loader = torch.utils.data.DataLoader(self.val_dataset, batch_size=self.batch_size, shuffle=True, num_workers=2)
 
         # Set up dict for dataloaders
         self.dataloaders = {'train': self.train_loader, 'val': self.val_loader}
@@ -60,7 +60,6 @@ class Dataloader:
     
     def plot_images(self):
         images, labels = iter(self.train_loader).next()
-        print(images.shape)
         images = images.numpy()
         fig = plt.figure(figsize=(10, 6))
         for idx in np.arange(self.batch_size):

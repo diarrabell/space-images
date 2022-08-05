@@ -25,7 +25,7 @@ class ResNet:
         self.dataset_sizes = dataset_sizes
         self.batch_size = batch_size
         # instantiate pre-trained resnet
-        self.model = torchvision.models.resnet50(pretrained=True)
+        self.model = torchvision.models.resnet18(pretrained=True)
         # shut off autograd for all layers to freeze model so layer weights are not trained
         for param in self.model.parameters():
             param.requires_grad = False       
