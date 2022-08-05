@@ -1,6 +1,13 @@
 # Space Images: Real or Fake?
 
 ## Description
+This app uses a ResNet 18 model to classify astronomy-related images as either "real" (captured by a telescope) or "fake" (entirely computer generated).
+
+This project was inspired by the following project led by researchers at the University of Hertfordshire: [Realistic galaxy image simulation via score-based generative models](https://arxiv.org/pdf/2111.01713.pdf). The paper, which was published in February 2022, details how the authors created realistic computer-generated images of galaxies and other space objects using machine learning. 
+
+These images, known as synthetic data, are intended to be used in the field of astronomy to test theories and predict the evolution of galaxies. The authors trained a machine learning model on images from [NASA's Astronomy Picture of the Day (APOD)](https://apod.nasa.gov/apod/astropix.html) archive and created fake APODs that do not actually exist. It would be interesting to see if a machine learning model could differentiate between the raw telescope images and the articfically generated images in order to improve their usage in the field of astronomy. 
+
+This model was trained on images collected from the Hubble and James Webb Telescopes as well as the computer generated images from the research paper.
 
 ## Run Streamlit app from cloud
 The frontend application is available on:
@@ -40,5 +47,5 @@ Open <code>notebooks/space.ipynb</code> in Colab and run all cells using GPU. Th
 
 ## Additional References
 * https://twitter.com/FakeAstropix/
-* https://photojournal.jpl.nasa.gov/mission/Hubble+Space+Telescope
+* https://apod.nasa.gov/apod/astropix.html
 * Smith, Michael J., Geach, James E., Jackson, Ryan A., Arora, Nikhil, Stone, Connor, and Courteau, Stéphane. Realistic galaxy image simulation via score-based generative models. United Kingdom: N. p., 2022. Web. doi:10.1093/mnras/stac130. https://arxiv.org/pdf/2111.01713.pdf
