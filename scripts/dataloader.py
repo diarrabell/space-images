@@ -12,7 +12,6 @@ from torch.utils.data import DataLoader, TensorDataset
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torchsummary import summary
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt

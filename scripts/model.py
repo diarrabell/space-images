@@ -19,6 +19,10 @@ warnings.filterwarnings('ignore')
 import matplotlib.pyplot as plt
 
 MODELS_PATH = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'models'))
+ #set random seeds for reproducibility
+torch.manual_seed(0)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed(0)
 
 class ResNet:
     def __init__(self, batch_size, dataset_sizes) -> None: #initialize resnet50 model
@@ -115,7 +119,7 @@ class ResNet:
         path = os.path.join(MODELS_PATH, filename)
         torch.save(self.final_model, path)
     
-    def visualize_results(self, val_loader):
+    def visualize_results(self, val_loader, class_names):
         model = self.final_model.to(self.device)
         with torch.no_grad():
             model.eval()
@@ -138,13 +142,12 @@ class ResNet:
             image = std * image + mean
             image = np.clip(image, 0, 1)
             ax.imshow(image)
-            ax.set_title("{} ({})".format(self.class_names[preds[idx]], self.class_names[labels[idx]]),
+            ax.set_title("{} ({})".format(class_names[preds[idx]], class_names[labels[idx]]),
                     color=("green" if preds[idx]==labels[idx] else "red"))
         plt.show()
 
     def test_model(self, model, test_loader, device):
         model = model.to(device)
-
         #turn autograd off
         with torch.no_grad():
             #set the model to evaluation mode

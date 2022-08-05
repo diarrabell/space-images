@@ -15,7 +15,7 @@ def main():
     data_dir= 'space-images/data/raw/images' 
 
     #create dataloader using Dataloader class, takes in data directory and batch size
-    batch_size = 4
+    batch_size = 8
     print("------------------------")
     print("Creating Dataloaders...")
     d = dl.Dataloader(data_dir, batch_size)
@@ -29,13 +29,13 @@ def main():
     resnet = md.ResNet(batch_size, d.dataset_sizes)
 
     # train model
-    num_epochs = 10
+    num_epochs = 12
     print("------------------------")
     print("Training model...")
     resnet.train_model(d.dataloaders, num_epochs)
     print("------------------------")
     print("Visualizing results...")
-    resnet.visualize_results(d.val_loader)
+    resnet.visualize_results(d.val_loader, d.class_names)
     print("------------------------")
     print("Saving model")
     resnet.savemodel()

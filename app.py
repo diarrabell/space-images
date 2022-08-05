@@ -5,16 +5,15 @@ Script for Streamlit app
 import streamlit as st
 import torch
 import os
-import pandas as pd
 import zipfile
 from PIL import Image
+os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 MODELS_PATH =  os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'models'))
 MODEL_FILENAME = 'resnetmodel.pt'
 MODEL_PATH = os.path.join(MODELS_PATH, MODEL_FILENAME)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-@st.cache
 def load_model():
     model = torch.load(MODEL_PATH, map_location=torch.device(device))
     model.eval()
@@ -35,10 +34,12 @@ def run():
     label = "Upload your image here. Image size is limited to 200 MB."
     uploaded_file = st.file_uploader(label, type=None)
     if uploaded_file is not None:
+        #display image
         st.image(load_image(uploaded_file), width=250)
         st.write("filename:{0} filesize:{1}".format(uploaded_file.name, uploaded_file.size))
 
-
+        #load trained model
+        model = load_model()
 
 if __name__ == "__main__":
     run()
