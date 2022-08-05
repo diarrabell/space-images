@@ -8,7 +8,6 @@ import os
 import pandas as pd
 import zipfile
 from PIL import Image
-import pickle
 
 MODELS_PATH =  os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'models'))
 MODEL_FILENAME = 'resnetmodel.pt'
@@ -24,6 +23,9 @@ def load_model():
 def make_prediction(image):
     pass
 
+def load_image(image):
+    return Image.open(image)
+
 def run():
     st.title("Determining Authenticity of Space Images")
     st.markdown('**This is an application that predicts whether a space-related image is authentic or fabricated.**')
@@ -33,7 +35,9 @@ def run():
     label = "Upload your image here. Image size is limited to 200 MB."
     uploaded_file = st.file_uploader(label, type=None)
     if uploaded_file is not None:
-        bytes_data = uploaded_file.getvalue()
+        st.image(load_image(uploaded_file), width=250)
+        st.write("filename:{0} filesize:{1}".format(uploaded_file.name, uploaded_file.size))
+
 
 
 if __name__ == "__main__":

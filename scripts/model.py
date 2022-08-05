@@ -140,7 +140,7 @@ class ResNet:
             ax.imshow(image)
             ax.set_title("{} ({})".format(self.class_names[preds[idx]], self.class_names[labels[idx]]),
                     color=("green" if preds[idx]==labels[idx] else "red"))
-        return
+        plt.show()
 
     def test_model(self, model, test_loader, device):
         model = model.to(device)
