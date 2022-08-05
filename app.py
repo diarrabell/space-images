@@ -21,7 +21,7 @@ def load_model():
 
 #function that makes prediction for image based on trained model
 def make_prediction(model):
-    with st.spinner("Testing image..."):
+    with st.spinner("testing image..."):
         time.sleep(5)
         #create dataloader
         data_transforms = transforms.Compose([
@@ -65,7 +65,7 @@ def run():
     bg_image()
     st.title("Determining Authenticity of Space Images")
     st.subheader('**This is an application that predicts whether a space-related image is authentic or computer-generated.**')
-    st.markdown("***by diarra bell  \nduke university aipi 540***")
+    st.markdown("***by diarra bell  \nduke university  \naipi 540***")
     hide_footer_style = """<style>.reportview-container .main footer {visibility: hidden;}"""
     st.markdown(hide_footer_style, unsafe_allow_html=True)
 
