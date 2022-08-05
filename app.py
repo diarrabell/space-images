@@ -71,7 +71,7 @@ def run():
 
     #create directory to store images
     if not os.path.exists("uploads/images"):
-        os.mkdir("uploads/images")
+        os.makedirs("uploads/images")
 
     #prompt user to upload file to test
     label = "upload your image here"
