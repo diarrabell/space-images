@@ -15,7 +15,7 @@ def main():
     data_dir= 'space-images/data/raw/images' 
 
     #create dataloader using Dataloader class, takes in data directory and batch size
-    batch_size = 5
+    batch_size = 4
     print("------------------------")
     print("Creating Dataloaders...")
     d = dl.Dataloader(data_dir, batch_size)
