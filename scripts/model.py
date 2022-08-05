@@ -146,44 +146,44 @@ class ResNet:
                     color=("green" if preds[idx]==labels[idx] else "red"))
         plt.show()
 
-    def test_model(self, model, test_loader, device):
-        model = model.to(device)
-        #turn autograd off
-        with torch.no_grad():
-            #set the model to evaluation mode
-            model.eval()
-            #set up lists to store true and predicted values
-            y_true = []
-            test_preds = []
-            test_probs = []
-            #calculate the predictions on the test set and add to list
-            for data in test_loader:
-                inputs, labels = data[0].to(device), data[1].to(device)
-                #feed inputs through model to get raw scores
-                logits = model.forward(inputs)
-                #convert raw scores to probabilities
-                probs = F.softmax(logits, dim=1)
-                #get discrete predictions using argmax
-                preds = np.argmax(probs.numpy(), axis=1)
-                #add predictions and actuals to lists
-                test_preds.extend(preds)
-                test_probs.extend(probs)
-                y_true.extend(labels)
-            
-            #calculate the accuracy
-            test_preds = np.array(test_preds)
-            test_probs = np.array(test_probs)
-            y_true = np.array(y_true)
-            test_acc = np.sum(test_preds == y_true)/y_true.shape[0]
-
-            #recall for each class
-            recall_vals = []
-            for i in range(2):
-                class_idx = np.argwhere(y_true==i)
-                total = len(class_idx)
-                correct = np.sum(test_preds[class_idx]==i)
-                recall = correct/total
-                recall_vals.append(recall)
+def test_model(model, test_loader, device):
+    model = model.to(device)
+    #turn autograd off
+    with torch.no_grad():
+        #set the model to evaluation mode
+        model.eval()
+        #set up lists to store true and predicted values
+        y_true = []
+        test_preds = []
+        test_probs = []
+        #calculate the predictions on the test set and add to list
+        for data in test_loader:
+            inputs, labels = data[0].to(device), data[1].to(device)
+            #feed inputs through model to get raw scores
+            logits = model.forward(inputs)
+            #convert raw scores to probabilities
+            probs = F.softmax(logits, dim=1)
+            #get discrete predictions using argmax
+            preds = np.argmax(probs.numpy(), axis=1)
+            #add predictions and actuals to lists
+            test_preds.extend(preds)
+            test_probs.extend(probs)
+            y_true.extend(labels)
         
-        return test_preds, test_probs, recall_vals, test_acc
+        #calculate the accuracy
+        # test_preds = np.array(test_preds)
+        # test_probs = np.array(test_probs)
+        # y_true = np.array(y_true)
+        # test_acc = np.sum(test_preds == y_true)/y_true.shape[0]
+
+        #recall for each class
+        # recall_vals = []
+        # for i in range(2):
+        #     class_idx = np.argwhere(y_true==i)
+        #     total = len(class_idx)
+        #     correct = np.sum(test_preds[class_idx]==i)
+        #     recall = correct/total
+        #     recall_vals.append(recall)
+    
+    return test_preds, test_probs
 

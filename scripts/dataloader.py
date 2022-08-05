@@ -51,6 +51,7 @@ class Dataloader:
         self.dataloaders = {'train': self.train_loader, 'val': self.val_loader}
         self.dataset_sizes = {'train': len(self.train_dataset), 'val': len(self.val_dataset)}
         self.class_names = self.train_dataset.classes
+        print("Classes: {0}".format(self.class_names))
 
         #set random seeds for reproducibility
         torch.manual_seed(0)

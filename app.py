@@ -3,7 +3,9 @@ Script for Streamlit app
 """
 
 import streamlit as st
+import test as t
 import torch
+from torchvision import datasets, transforms
 import os
 import zipfile
 from PIL import Image
@@ -19,9 +21,23 @@ def load_model():
     model.eval()
     return model
 
-def make_prediction(image):
+def make_prediction(model):
+    st.write("Testing image...")
     #create dataloader
-    pass
+    data_transforms = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ])
+
+    test_dataset = datasets.ImageNet(root="/uploads", transform=data_transforms)
+    test_dataloader = torch.utils.data.DataLoader(test_dataset, batch_size=4)
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    prediction = t.test_model(model, test_dataloader, device)
+    st.write("Predicted class:{0}".format(prediction))
+    return 
+
 
 def load_image(image):
     return Image.open(image)
@@ -39,8 +55,13 @@ def run():
         st.image(load_image(uploaded_file), width=250)
         st.write("filename:{0} filesize:{1}".format(uploaded_file.name, uploaded_file.size))
 
+        #save upload
+        with open(os.path.join("/uploads", uploaded_file.name), "wb") as f:
+            f.write((uploaded_file).getbuffer()) 
+
         #load trained model
         model = load_model()
+        make_prediction(uploaded_file.name, model)
 
 if __name__ == "__main__":
     run()
