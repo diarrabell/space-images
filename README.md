@@ -11,7 +11,7 @@ This model was trained on images collected from the Hubble and James Webb Telesc
 
 ## Run Streamlit app from cloud
 The frontend application is available on:
-* [Google Cloud](https://second-zephyr-358401.uc.r.appspot.com/) (No longer available)
+* ~~[Google Cloud](https://second-zephyr-358401.uc.r.appspot.com/)~~ (No longer available)
 * [Streamlit Cloud](https://diarrabell-space-images-app-112ad7.streamlitapp.com/)
 
 To get started, simply upload an image and wait for the prediction!
